@@ -5,8 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Enemy", menuName = "ScriptableObjects/Enemies", order = 1)]
 public class EnemyController : ScriptableObject
 {
-    [SerializeField] private string name;
-    [SerializeField] private string color;
-    [SerializeField] private float speed;
-    [SerializeField] private float damage;
+    public string name;
+    public string color;
+    public float speed;
+    public float damage;
+    public float hp;
 }

@@ -9,11 +9,15 @@ public class PlayerController : MonoBehaviour
 
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 24f;
+    private float dashingPower = 15f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
     private Rigidbody2D rb;
     private TrailRenderer trail;
+
+    private bool canBite = true;
+    [SerializeField] private GameObject attack;
+    [SerializeField] private Color leftButton, rightButton;
 
     private void Start()
     {
@@ -26,6 +30,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical")));
+        }
+        if (Input.GetMouseButton(0) && canBite)
+        {
+            StartCoroutine(Bite(leftButton));
+        }
+        if (Input.GetMouseButton(1) && canBite)
+        {
+            StartCoroutine(Bite(rightButton));
         }
     }
 
@@ -63,5 +75,15 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
         rb.velocity = new Vector2(0f, 0f);
+    }
+
+    private IEnumerator Bite(Color color)
+    {
+        canBite = false;
+        GameObject g = Instantiate(attack, transform.position, Quaternion.identity);
+        g.GetComponent<SpriteRenderer>().color = color;
+        yield return new WaitForSeconds(0.5f);
+        canBite = true;
+        Destroy(g, 0.1f);
     }
 }
