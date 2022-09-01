@@ -5,5 +5,4 @@ using UnityEngine;
 public class RoomController : MonoBehaviour
 {
     [SerializeField] private List<Room> rooms = new List<Room>();
-
 }

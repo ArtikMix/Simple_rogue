@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject attack;
     [SerializeField] private Color leftButton, rightButton;
 
+    [SerializeField] private GameObject[] hearts = new GameObject[3];
+    private int health = 3;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -46,6 +49,14 @@ public class PlayerController : MonoBehaviour
         Movement();
     }
 
+    private void Damage(int damage)
+    {
+        if (!isDashing)
+        {
+            health -= damage;
+            hearts[health].SetActive(false);
+        }
+    }
 
     private void Movement()
     {

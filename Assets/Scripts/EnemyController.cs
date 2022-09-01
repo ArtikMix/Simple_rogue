@@ -8,6 +8,6 @@ public class EnemyController : ScriptableObject
     public string name;
     public string color;
     public float speed;
-    public float damage;
-    public float hp;
+    public int damage;
+    public int hp;
 }
