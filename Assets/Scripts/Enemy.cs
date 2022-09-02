@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private EnemyController controller;
-    private bool isPlayerInRoom = false;
+    //[SerializeField] public EnemyController controller;
+
+    //сделать свойства
+    public string name;
+    public string color;
+    public float speed = 5f;
+    public int damage;
+    public int hp;
+
+    private bool isPlayerInRoom = true;//не забыть сделать false
     private Transform player;
     private bool dead = false;
 
@@ -28,9 +36,9 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        //if (isPlayerInRoom && Vector3.Distance(tramsform.position, player.position) >= 1f)
+        //if (isPlayerInRoom && Vector3.Distance(transform.position, player.position) >= 0.1f)
         //{
-            transform.position = Vector2.MoveTowards(transform.position, player.position, controller.speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         //}
     }
 }

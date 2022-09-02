@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer renderer;
 
     private bool canDash = true;
-    private bool isDashing;
+    private bool isDashing = false;
     private float dashingPower = 15f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool canBite = true;
     [SerializeField] private GameObject attack;
     [SerializeField] private Color leftButton, rightButton;
+    private float biteDistance = 2.5f;
 
     [SerializeField] private GameObject[] hearts = new GameObject[3];
     private int health = 3;
@@ -91,10 +92,38 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Bite(Color color)
     {
         canBite = false;
-        GameObject g = Instantiate(attack, transform.position, Quaternion.identity);
+        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector2 heading = new Vector2();
+        float dist;
+        Vector2 direct = new Vector2();
+        Vector2 bitePlace = new Vector2();
+        if (Vector2.Distance(mouseWorld, transform.position) > biteDistance)
+        {
+            heading = mouseWorld - new Vector2(transform.position.x, transform.position.y);
+            dist = heading.magnitude;
+            direct = heading / dist;
+            bitePlace = direct * biteDistance + new Vector2(transform.position.x,transform.position.y);
+        }
+
+        GameObject g = Instantiate(attack, bitePlace, Quaternion.identity);
         g.GetComponent<SpriteRenderer>().color = color;
-        yield return new WaitForSeconds(0.5f);
+
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(g.transform.position, 1.5f, 7);
+        DoDamage(enemies);
+
+        yield return new WaitForSeconds(0.7f);
         canBite = true;
         Destroy(g, 0.1f);
+        Debug.Log(mouseWorld);
+    }
+
+    private void DoDamage(Collider2D[] e)
+    {
+        for(int i = 0; i < e.Length; i++)
+        {
+            e[i].GetComponent<Enemy>().hp--;
+            Debug.Log(e[i].transform.name);
+        }
     }
 }
