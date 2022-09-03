@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public string color;
     public float speed = 5f;
     public int damage;
-    public int hp;
+    public int hp = 1;
 
     private bool isPlayerInRoom = true;//не забыть сделать false
     private Transform player;
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //if (isPlayerInRoom && Vector3.Distance(transform.position, player.position) >= 0.1f)
         //{

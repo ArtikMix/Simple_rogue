@@ -98,32 +98,37 @@ public class PlayerController : MonoBehaviour
         float dist;
         Vector2 direct = new Vector2();
         Vector2 bitePlace = new Vector2();
+        GameObject g = new GameObject();
         if (Vector2.Distance(mouseWorld, transform.position) > biteDistance)
         {
             heading = mouseWorld - new Vector2(transform.position.x, transform.position.y);
             dist = heading.magnitude;
             direct = heading / dist;
-            bitePlace = direct * biteDistance + new Vector2(transform.position.x,transform.position.y);
+            bitePlace = direct * biteDistance + new Vector2(transform.position.x, transform.position.y);
+            g = Instantiate(attack, bitePlace, Quaternion.identity);
+        }
+        else if (Vector2.Distance(mouseWorld, transform.position) < biteDistance)
+        {
+            g = Instantiate(attack, mouseWorld, Quaternion.identity);
         }
 
-        GameObject g = Instantiate(attack, bitePlace, Quaternion.identity);
         g.GetComponent<SpriteRenderer>().color = color;
 
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(g.transform.position, 1.5f, 7);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(g.transform.position, 1.5f, 6);
         DoDamage(enemies);
+        Destroy(g, 0.25f);
 
         yield return new WaitForSeconds(0.7f);
         canBite = true;
-        Destroy(g, 0.1f);
+        
         Debug.Log(mouseWorld);
     }
 
     private void DoDamage(Collider2D[] e)
     {
-        for(int i = 0; i < e.Length; i++)
+        foreach(Collider2D col in e)
         {
-            e[i].GetComponent<Enemy>().hp--;
-            Debug.Log(e[i].transform.name);
+            Debug.Log(col.transform.name);
         }
     }
 }
