@@ -10,12 +10,14 @@ public class Enemy : MonoBehaviour
     public string name;
     public string color;
     public float speed = 5f;
-    public int damage;
-    public int hp = 1;
+    private bool canDamage = true;
+    [HideInInspector] public int hp = 2;
 
     private bool isPlayerInRoom = true;//не забыть сделать false
     private Transform player;
     private bool dead = false;
+
+    [SerializeField] private GameObject rip;
 
     public bool Dead
     {
@@ -36,9 +38,45 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (isPlayerInRoom && Vector3.Distance(transform.position, player.position) >= 0.1f)
-        //{
+        if (isPlayerInRoom && Vector3.Distance(transform.position, player.position) >= 1.5f)
+        {
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        //}
+        }
+        else if (Vector3.Distance(transform.position, player.position) < 1.5f && canDamage)
+        {
+            StartCoroutine(DoDamage());
+        }
+    }
+
+    public void TakeDamage()
+    {
+        hp--;
+        StartCoroutine(TakeDMG());
+        if (hp <= 0)
+        {
+            Death();
+        }
+    }
+
+    private IEnumerator TakeDMG()
+    {
+        Color temp = transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 255);
+        yield return new WaitForSeconds(0.1f);
+        transform.GetChild(0).GetComponent<SpriteRenderer>().color = temp;
+    }
+
+    private void Death()
+    {
+        Instantiate(rip, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    private IEnumerator DoDamage()
+    {
+        canDamage = false;
+        player.GetComponent<PlayerController>().Damage();
+        yield return new WaitForSeconds(1f);
+        canDamage = true;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private bool canDash = true;
     private bool isDashing = false;
-    private float dashingPower = 15f;
+    private float dashingPower = 7f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
     private Rigidbody2D rb;
@@ -50,12 +51,13 @@ public class PlayerController : MonoBehaviour
         Movement();
     }
 
-    private void Damage(int damage)
+    public void Damage()
     {
         if (!isDashing)
         {
-            health -= damage;
-            hearts[health].SetActive(false);
+            health--;
+            hearts[health].GetComponent<Image>().color = new Color(hearts[health].GetComponent<Image>().color.r, hearts[health].GetComponent<Image>().color.g, 
+                hearts[health].GetComponent<Image>().color.b, 155f);
         }
     }
 
@@ -114,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
         g.GetComponent<SpriteRenderer>().color = color;
 
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(g.transform.position, 1.5f, 6);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(g.transform.position, 1.1f);
         DoDamage(enemies);
         Destroy(g, 0.25f);
 
@@ -128,7 +130,8 @@ public class PlayerController : MonoBehaviour
     {
         foreach(Collider2D col in e)
         {
-            Debug.Log(col.transform.name);
+            if (col.GetComponent<Enemy>()!=null)
+                col.GetComponent<Enemy>().TakeDamage();
         }
     }
 }
