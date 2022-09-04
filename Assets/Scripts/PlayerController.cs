@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         trail = GetComponent<TrailRenderer>();
+        health = 3;
     }
 
     private void Update()
@@ -53,11 +54,13 @@ public class PlayerController : MonoBehaviour
 
     public void Damage()
     {
-        if (!isDashing)
+        if (!isDashing && health>0)
         {
             health--;
+            Debug.Log(health);
             hearts[health].GetComponent<Image>().color = new Color(hearts[health].GetComponent<Image>().color.r, hearts[health].GetComponent<Image>().color.g, 
-                hearts[health].GetComponent<Image>().color.b, 155f);
+                hearts[health].GetComponent<Image>().color.b, 100/255f);
+            Debug.Log(hearts[health].GetComponent<Image>().color);
         }
     }
 
