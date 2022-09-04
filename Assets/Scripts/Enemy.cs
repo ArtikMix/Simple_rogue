@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
     //сделать свойства
     public string name;
-    public string color;
+    public Color color;
     public float speed = 5f;
     private bool canDamage = true;
     [HideInInspector] public int hp = 2;

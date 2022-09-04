@@ -153,6 +153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms: []
+  baseRooms:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &512545842
 Transform:
   m_ObjectHideFlags: 0
@@ -435,6 +439,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7830723657676432989, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
+      propertyPath: color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830723657676432989, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
+      propertyPath: color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830723657676432989, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
+      propertyPath: color.g
+      value: 0.043137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830723657676432989, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
+      propertyPath: color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7830723657676432991, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -641,6 +661,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7830723657676432989, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
+      propertyPath: color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830723657676432989, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
+      propertyPath: color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830723657676432989, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
+      propertyPath: color.g
+      value: 0.043137256
+      objectReference: {fileID: 0}
     - target: {fileID: 7830723657676432991, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -791,16 +823,20 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5727196619513094275, guid: 816af26ec012d584e979e20382858cff, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727196619513094275, guid: 816af26ec012d584e979e20382858cff, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.7169812
+      value: 0.16470589
       objectReference: {fileID: 0}
     - target: {fileID: 5727196619513094275, guid: 816af26ec012d584e979e20382858cff, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.566107
+      value: 0.16470589
       objectReference: {fileID: 0}
     - target: {fileID: 5727196619513094275, guid: 816af26ec012d584e979e20382858cff, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.47009614
+      value: 0.16470589
       objectReference: {fileID: 0}
     - target: {fileID: 5727196619566224348, guid: 816af26ec012d584e979e20382858cff, type: 3}
       propertyPath: m_RootOrder

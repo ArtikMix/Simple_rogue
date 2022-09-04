@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
         g.GetComponent<SpriteRenderer>().color = color;
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(g.transform.position, 1.1f);
-        DoDamage(enemies);
+        DoDamage(enemies, color);
         Destroy(g, 0.25f);
 
         yield return new WaitForSeconds(0.7f);
@@ -129,11 +129,11 @@ public class PlayerController : MonoBehaviour
         Debug.Log(mouseWorld);
     }
 
-    private void DoDamage(Collider2D[] e)
+    private void DoDamage(Collider2D[] e, Color c)
     {
         foreach(Collider2D col in e)
         {
-            if (col.GetComponent<Enemy>()!=null)
+            if (col.GetComponent<Enemy>()!=null && col.GetComponent<Enemy>().color == c)
                 col.GetComponent<Enemy>().TakeDamage();
         }
     }
