@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 7830723657676432989}
   m_Layer: 7
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,8 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: 
-  color: 
+  color: {r: 0, g: 0, b: 0, a: 0}
   speed: 5
-  damage: 0
   hp: 2
   rip: {fileID: 6159031778525238479, guid: 7c5354d1575e0d34fa087286ee94dbe1, type: 3}

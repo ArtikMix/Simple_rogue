@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage()
     {
+        Debug.Log(transform.name + " is taking damage!");
         hp--;
         StartCoroutine(TakeDMG());
         if (hp <= 0)

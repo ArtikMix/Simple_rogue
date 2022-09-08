@@ -57,10 +57,8 @@ public class PlayerController : MonoBehaviour
         if (!isDashing && health>0)
         {
             health--;
-            Debug.Log(health);
             hearts[health].GetComponent<Image>().color = new Color(hearts[health].GetComponent<Image>().color.r, hearts[health].GetComponent<Image>().color.g, 
                 hearts[health].GetComponent<Image>().color.b, 100/255f);
-            Debug.Log(hearts[health].GetComponent<Image>().color);
         }
     }
 
@@ -96,9 +94,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Bite(Color color)
     {
-        canBite = false;
-        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Debug.Log("Bite color: " + color);
 
+        canBite = false;
+
+        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 heading = new Vector2();
         float dist;
         Vector2 direct = new Vector2();
@@ -133,8 +133,13 @@ public class PlayerController : MonoBehaviour
     {
         foreach(Collider2D col in e)
         {
-            if (col.GetComponent<Enemy>()!=null && col.GetComponent<Enemy>().color == c)
+            Debug.Log("Cicle" + col.tag);
+            if (col.tag == "Enemy" && col.GetComponent<Enemy>().color.Equals(c) == true)
+            {
+                Debug.Log("Equal colors");
                 col.GetComponent<Enemy>().TakeDamage();
+            }
+                
         }
     }
 }
