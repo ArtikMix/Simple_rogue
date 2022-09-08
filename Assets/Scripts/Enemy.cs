@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
     //[SerializeField] public EnemyController controller;
 
     //сделать свойства
-    public string name;
     public Color color;
     public float speed = 5f;
     private bool canDamage = true;

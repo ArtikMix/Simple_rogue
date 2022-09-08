@@ -6,18 +6,15 @@ public class Room : MonoBehaviour
 {
     [SerializeField] private List<Enemy> enemies = new List<Enemy>();
 
-    private int enemiesCount;
-    private int[] ways;
+    [SerializeField] private int enemiesCount;
+    [SerializeField] private int[] ways;
+    [SerializeField] private bool promotion;
 
-    public void GetParametrs(int ec, int[] w)
+    public void Parametrs(int enemiesC, int[] w, bool prom)
     {
-        enemiesCount = ec;
+        enemiesCount = enemiesC;
         ways = w;
-        SetParametrs();
-    }
-
-    private void SetParametrs()
-    {
-
+        promotion = prom;
+        //Debug.Log(enemiesC + "\n" + w + "\n" + prom);
     }
 }

@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
     {
         foreach(Collider2D col in e)
         {
-            Debug.Log("Cicle" + col.tag);
+            Debug.Log("Cicle " + col.tag);
             if (col.tag == "Enemy" && col.GetComponent<Enemy>().color.Equals(c) == true)
             {
                 Debug.Log("Equal colors");

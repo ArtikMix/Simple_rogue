@@ -152,11 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0837e00987136b345af4201d04b65557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rooms: []
-  baseRooms:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  baseRooms: {fileID: 7056601236662614234, guid: 1d1faa0ccfef012438d8e55fecc332be, type: 3}
 --- !u!4 &512545842
 Transform:
   m_ObjectHideFlags: 0
@@ -194,6 +190,10 @@ PrefabInstance:
     - target: {fileID: 7056601236662614234, guid: 1d1faa0ccfef012438d8e55fecc332be, type: 3}
       propertyPath: m_Name
       value: Room_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056601236662614234, guid: 1d1faa0ccfef012438d8e55fecc332be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7056601236662614235, guid: 1d1faa0ccfef012438d8e55fecc332be, type: 3}
       propertyPath: m_RootOrder
@@ -439,6 +439,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7830723657676432985, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7830723657676432989, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
       propertyPath: color.a
       value: 1
@@ -660,6 +664,10 @@ PrefabInstance:
     - target: {fileID: 7830723657676432985, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830723657676432985, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7830723657676432989, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
       propertyPath: color.a

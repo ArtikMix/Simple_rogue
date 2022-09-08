@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    [SerializeField] private List<Room> rooms = new List<Room>();
-    [SerializeField] private GameObject[] baseRooms = new GameObject[3];
+    private List<Room> rooms = new List<Room>();
+    [SerializeField] private GameObject baseRooms;//потом будет массив комнат
 
     private void Start()
     {
-        
+        CreateMap();
     }
 
     private void CreateMap()
@@ -22,9 +22,23 @@ public class RoomController : MonoBehaviour
         //спавн файтрумов
         for (int i = 0; i < figthRoomCount; i++)
         {
-            GameObject room = Instantiate(baseRooms[Random.Range(0, 2)], spawnPlace, Quaternion.identity);
-            int[] waysForThisRoom = new int[Random.Range(1, 3)];
-            room.GetComponent<Room>().GetParametrs(Random.Range(3, 9), waysForThisRoom);
+            GameObject room = Instantiate(baseRooms, spawnPlace, Quaternion.identity);
+            rooms.Add(room.GetComponent<Room>());
+
+            bool prom = true;//
+            int enemiesCountInRoom = Random.Range(3, 9);
+            int[] ways = new int[Random.Range(1,3)];
+            for (int j = 0; j < ways.Length; j++)
+            {
+                ways[j] = Random.Range(0, rooms.Count);
+                if (prom)
+                {
+                    ways[0] = rooms.Count + 1;
+                }
+            }
+            room.GetComponent<Room>().Parametrs(enemiesCountInRoom, ways, prom);
+
+            spawnPlace = new Vector2(spawnPlace.x + 50f, 0);
         }
     }
 }
