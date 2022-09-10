@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private GameObject rip;
 
+    private RoomController roomController;
+
     public bool Dead
     {
         get { return dead; }
@@ -33,6 +35,8 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        roomController = FindObjectOfType<RoomController>();
     }
 
     private void FixedUpdate()
@@ -68,7 +72,9 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
+        dead = true;
         Instantiate(rip, transform.position, Quaternion.identity);
+        roomController.CheckCondition();
         Destroy(gameObject);
     }
 

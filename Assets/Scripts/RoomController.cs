@@ -8,6 +8,8 @@ public class RoomController : MonoBehaviour
     [SerializeField] private GameObject baseRooms;//потом будет массив комнат
     [SerializeField] private GameObject player;
 
+    public int currentRoom;
+
     private void Start()
     {
         CreateMap();
@@ -45,6 +47,12 @@ public class RoomController : MonoBehaviour
 
     public void Teleportation(int roomNumber)
     {
+        currentRoom = roomNumber;
         player.transform.position = rooms[roomNumber].transform.position;
+    }
+
+    public void CheckCondition()
+    {
+        if (rooms[currentRoom].CheckEnemiesCondition()) rooms[currentRoom].PortalsActivate();
     }
 }

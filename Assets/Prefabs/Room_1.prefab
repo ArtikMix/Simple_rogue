@@ -19132,6 +19132,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 27.12428, y: 1.1290092}
   m_EdgeRadius: 0
+--- !u!1 &6897104289327296730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3295824165661239297, guid: 488c25b07dcfca44797d85562f99f163, type: 3}
+  m_PrefabInstance: {fileID: 8217505070654150875}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7056601236662614234 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1433380795180163073, guid: 488c25b07dcfca44797d85562f99f163, type: 3}
@@ -19157,6 +19162,8 @@ MonoBehaviour:
   - {fileID: 1957017278932516052}
   - {fileID: 64553801926703179}
   - {fileID: 8879487578480631923}
+  baseEnemy: {fileID: 7830723657676432985, guid: 7fafb9af87369fd489f338bd261817e5, type: 3}
+  enemiesContainer: {fileID: 6897104289327296730}
 --- !u!1 &8879487578480631923 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 662090421028731048, guid: 488c25b07dcfca44797d85562f99f163, type: 3}
