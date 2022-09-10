@@ -6,6 +6,7 @@ public class RoomController : MonoBehaviour
 {
     private List<Room> rooms = new List<Room>();
     [SerializeField] private GameObject baseRooms;//потом будет массив комнат
+    [SerializeField] private GameObject player;
 
     private void Start()
     {
@@ -26,8 +27,8 @@ public class RoomController : MonoBehaviour
             rooms.Add(room.GetComponent<Room>());
 
             bool prom = true;//
-            int enemiesCountInRoom = Random.Range(3, 9);
-            int[] ways = new int[Random.Range(1,3)];
+            int enemiesCountInRoom = Random.Range(3, 10);
+            int[] ways = new int[Random.Range(1,4)];
             for (int j = 0; j < ways.Length; j++)
             {
                 ways[j] = Random.Range(0, rooms.Count);
@@ -40,5 +41,10 @@ public class RoomController : MonoBehaviour
 
             spawnPlace = new Vector2(spawnPlace.x + 50f, 0);
         }
+    }
+
+    public void Teleportation(int roomNumber)
+    {
+        player.transform.position = rooms[roomNumber].transform.position;
     }
 }

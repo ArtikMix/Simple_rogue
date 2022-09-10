@@ -19013,6 +19013,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488c25b07dcfca44797d85562f99f163, type: 3}
+--- !u!1 &64553801926703179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8281880045173219472, guid: 488c25b07dcfca44797d85562f99f163, type: 3}
+  m_PrefabInstance: {fileID: 8217505070654150875}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1957017278932516052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7575839119450645519, guid: 488c25b07dcfca44797d85562f99f163, type: 3}
+  m_PrefabInstance: {fileID: 8217505070654150875}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2311105773145113249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5915692680186468986, guid: 488c25b07dcfca44797d85562f99f163, type: 3}
@@ -19140,3 +19150,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
+  enemiesCount: 0
+  ways: 
+  promotion: 0
+  portals:
+  - {fileID: 1957017278932516052}
+  - {fileID: 64553801926703179}
+  - {fileID: 8879487578480631923}
+--- !u!1 &8879487578480631923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 662090421028731048, guid: 488c25b07dcfca44797d85562f99f163, type: 3}
+  m_PrefabInstance: {fileID: 8217505070654150875}
+  m_PrefabAsset: {fileID: 0}
