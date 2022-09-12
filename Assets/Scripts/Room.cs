@@ -27,8 +27,15 @@ public class Room : MonoBehaviour
     {
         for (int i = 0; i<enemiesCount; i++)
         {
-            Instantiate(baseEnemy, new Vector2(Random.Range(transform.position.x / 1.9f, transform.position.x * 1.9f), Random.Range(transform.position.y / 1.9f, transform.position.y
+           GameObject enemy = Instantiate(baseEnemy, new Vector2(Random.Range(transform.position.x / 1.9f, transform.position.x * 1.9f), Random.Range(transform.position.y / 1.9f, transform.position.y
                 * 1.9f)), Quaternion.identity, enemiesContainer.transform);
+            enemies.Add(enemy.GetComponent<Enemy>());
+        }
+        
+        //debug
+        foreach(Enemy e in enemies)
+        {
+            e.speed = 0f;
         }
     }
 
